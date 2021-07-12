@@ -17,16 +17,22 @@ jobs:
       with:
         repository: 'begyyal/act_revise_comments'
 
-    - name: Extract the issue no
-      id: ready
-      shell: bash
+    - shell: bash
       run: |
-        branch=${{github.head_ref}}
-        echo "::set-output name=issue-no::${branch#feature/}"
+        cat ./.git/config
+        echo '========'
+        cat ~/.gitconfig
 
-    - name: Revise target feature's comments
-      uses: ./
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repos: ${{ github.repository }}
-        issueNo: ${{ steps.ready.outputs.issue-no }}
+    # - name: Extract the issue no
+    #   id: ready
+    #   shell: bash
+    #   run: |
+    #     branch=${{github.head_ref}}
+    #     echo "::set-output name=issue-no::${branch#feature/}"
+
+    # - name: Revise target feature's comments
+    #   uses: ./
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     repos: ${{ github.repository }}
+    #     issueNo: ${{ steps.ready.outputs.issue-no }}
