@@ -27,6 +27,6 @@ jobs:
     - name: Revise target feature's comments
       uses: ./
       with:
-        token: ${{ secrets.PAT_REPO }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         repos: ${{ github.repository }}
         issueNo: ${{ steps.ready.outputs.issue-no }}
